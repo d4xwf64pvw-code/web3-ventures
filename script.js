@@ -19,3 +19,17 @@ function prevStep() {
     showStep(currentStep);
   }
 }
+document.getElementById("signupForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  // Hide signup
+  document.getElementById("signupForm").style.display = "none";
+
+  // Show loading
+  document.getElementById("loadingScreen").style.display = "flex";
+
+  // Fake loading before dashboard
+  setTimeout(() => {
+    window.location.href = "dashboard.html";
+  }, 3000);
+});
