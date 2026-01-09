@@ -112,3 +112,17 @@ main h2 {
 .switch a {
   color: #00ffa6;
 }
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
