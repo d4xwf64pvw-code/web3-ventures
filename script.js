@@ -1,16 +1,21 @@
 let currentStep = 0;
 const steps = document.querySelectorAll(".step");
 
+function showStep(index) {
+  steps.forEach(step => step.classList.remove("active"));
+  steps[index].classList.add("active");
+}
+
 function nextStep() {
   if (currentStep < steps.length - 1) {
-    steps[currentStep].classList.remove("active");
     currentStep++;
-    steps[currentStep].classList.add("active");
+    showStep(currentStep);
   }
 }
 
-document.getElementById("multiStepForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  alert("Account created successfully. Redirecting to dashboard...");
-  window.location.href = "dashboard.html";
-});
+function prevStep() {
+  if (currentStep > 0) {
+    currentStep--;
+    showStep(currentStep);
+  }
+}
