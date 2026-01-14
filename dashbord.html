@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Web3.Network Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+
+<body class="dashboard-body">
+
+  <!-- TOP NAV -->
+  <header class="dashboard-header">
+    <div class="logo">
+      <h2>Web3.Network</h2>
+      <span>(NETWORK)</span>
+    </div>
+
+    <nav class="dashboard-nav">
+      <button>Buy</button>
+      <button>Sell</button>
+      <button>Trade</button>
+      <button>Settings</button>
+      <button id="logoutBtn" class="logout">Logout</button>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+
+    <!-- BALANCE CARDS -->
+    <section class="balance-section">
+      <div class="balance-card">
+        <h4>Ethereum (ETH)</h4>
+        <p class="balance" data-balance>+$12,450.23</p>
+      </div>
+
+      <div class="balance-card">
+        <h4>Solana (SOL)</h4>
+        <p class="balance" data-balance>-$2,310.87</p>
+      </div>
+
+      <div class="balance-card">
+        <h4>Bitcoin (BTC)</h4>
+        <p class="balance" data-balance>+$45,980.12</p>
+      </div>
+
+      <div class="balance-card">
+        <h4>USDT</h4>
+        <p class="balance" data-balance>+$8,200.00</p>
+      </div>
+    </section>
+
+    <!-- ASSETS TABLE -->
+    <section class="assets-section">
+      <h3>Your Assets</h3>
+
+      <div class="asset-row">
+        <span>Ethereum</span>
+        <span class="green">+ $1,230.45</span>
+      </div>
+
+      <div class="asset-row">
+        <span>Solana</span>
+        <span class="red">- $430.10</span>
+      </div>
+
+      <div class="asset-row">
+        <span>Polygon</span>
+        <span class="green">+ $98.32</span>
+      </div>
+
+      <div class="asset-row">
+        <span>BNB</span>
+        <span class="green">+ $670.00</span>
+      </div>
+
+      <div class="asset-row">
+        <span>Avalanche</span>
+        <span class="red">- $120.55</span>
+      </div>
+    </section>
+
+    <!-- ACTIVITY -->
+    <section class="activity-section">
+      <h3>Network Activity</h3>
+      <p>Market updating in real-time…</p>
+      <p>Assets syncing securely…</p>
+      <p>Wallet connected successfully.</p>
+    </section>
+
+  </main>
+
+</body>
+</html>
