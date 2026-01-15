@@ -1,63 +1,55 @@
-// ===============================
-// SIGNUP STEP-BY-STEP CONTROLLER
-// ===============================
+const steps = document.querySelectorAll(".step");
+const nextBtns = document.querySelectorAll(".next-btn");
+const prevBtns = document.querySelectorAll(".prev-btn");
 
 let currentStep = 0;
 
-// Get all step sections
-const steps = document.querySelectorAll(".step");
-
-// Buttons
-const nextBtn = document.getElementById("nextBtn");
-const createAccountBtn = document.getElementById("createAccountBtn");
-
-// Show only one step at a time
-function showStep(stepIndex) {
-  steps.forEach((step, index) => {
-    step.style.display = index === stepIndex ? "block" : "none";
-  });
-
-  // Toggle buttons
-  if (stepIndex === steps.length - 1) {
-    nextBtn.style.display = "none";
-    createAccountBtn.style.display = "block";
-  } else {
-    nextBtn.style.display = "block";
-    createAccountBtn.style.display = "none";
-  }
+function showStep(index) {
+  steps.forEach(step => step.classList.remove("active"));
+  steps[index].classList.add("active");
 }
 
-// Initialize
-showStep(currentStep);
-
-// NEXT BUTTON CLICK
-if (nextBtn) {
-  nextBtn.addEventListener("click", () => {
+nextBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
     if (currentStep < steps.length - 1) {
       currentStep++;
       showStep(currentStep);
     }
   });
-}
+});
 
-// CREATE ACCOUNT CLICK
+prevBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  });
+});
+
+showStep(currentStep);   
+const createAccountBtn = document.getElementById("createAccountBtn");
+
 if (createAccountBtn) {
   createAccountBtn.addEventListener("click", () => {
+    // Show loading screen
+    document.body.innerHTML = `
+      <div style="
+        height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:#0b3d2e;
+        color:white;
+        font-size:20px;
+      ">
+        Please hold on, your account is being created...
+      </div>
+    `;
 
-    // Collect data (for Firebase later)
-    const userData = {
-      name: document.getElementById("name")?.value || "",
-      email: document.getElementById("email")?.value || "",
-      phone: document.getElementById("phone")?.value || "",
-      security: document.getElementById("security")?.value || "",
-      wallet: document.getElementById("wallet")?.value || ""
-    };
-
-    console.log("Signup data:", userData);
-
-    // Redirect to dashboard
+    // Fake loading then redirect
     setTimeout(() => {
       window.location.href = "dashboard.html";
-    }, 1000);
+    }, 3000);
   });
 }
