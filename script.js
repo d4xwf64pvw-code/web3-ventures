@@ -36,3 +36,6 @@ if (logoutBtn) {
     window.location.href = "login.html";
   });
 }
+document.getElementById("createAccountBtn").addEventListener("click", function () {
+  window.location.href = "dashboard.html";
+});
