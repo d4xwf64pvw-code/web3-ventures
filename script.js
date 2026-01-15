@@ -39,3 +39,12 @@ if (logoutBtn) {
 document.getElementById("createAccountBtn").addEventListener("click", function () {
   window.location.href = "dashboard.html";
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("createAccountBtn");
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      window.location.href = "dashboard.html";
+    });
+  }
+});
