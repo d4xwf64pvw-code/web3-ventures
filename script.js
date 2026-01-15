@@ -36,14 +36,22 @@ if (logoutBtn) {
     window.location.href = "login.html";
   });
 }
-document.getElementById("createAccountBtn").addEventListener("click", function () {
-  window.location.href = "dashboard.html";
-});
 document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("createAccountBtn");
+  const steps = document.querySelectorAll(".step");
+  const nextBtns = document.querySelectorAll(".next");
+  let currentStep = 0;
 
-  if (btn) {
+  nextBtns.forEach(btn => {
     btn.addEventListener("click", () => {
+      steps[currentStep].classList.remove("active");
+      currentStep++;
+      steps[currentStep].classList.add("active");
+    });
+  });
+
+  const createBtn = document.getElementById("createAccountBtn");
+  if (createBtn) {
+    createBtn.addEventListener("click", () => {
       window.location.href = "dashboard.html";
     });
   }
