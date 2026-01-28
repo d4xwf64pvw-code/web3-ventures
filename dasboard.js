@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     solana: 430.10,
     polygon: 98.32,
     bnb: 670.00,
+    avalanche: 120.55
   };
 
   function updatePrices() {
