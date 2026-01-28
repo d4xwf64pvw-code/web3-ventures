@@ -1,5 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-
   const assets = {
     ethereum: 1230.45,
     solana: 430.10,
@@ -23,4 +21,3 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   setInterval(updatePrices, 2000);
-});
